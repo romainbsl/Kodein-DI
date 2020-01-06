@@ -2,7 +2,7 @@ package org.kodein.di.internal
 
 import org.kodein.di.*
 import org.kodein.di.bindings.*
-
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DIContainerImpl"), level = DeprecationLevel.WARNING)
 internal class KodeinContainerImpl private constructor(
         override val tree: KodeinTree,
         private val node: Node?,

@@ -3,6 +3,7 @@ package org.kodein.di
 /**
  * Any class that extends this interface can use direct Kodein "seamlessly".
  */
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DirectDIAware"), level = DeprecationLevel.WARNING)
 interface DKodeinAware {
     /**
      * A Direct Kodein Aware class must be within reach of a [DKodein] object.
@@ -14,6 +15,7 @@ interface DKodeinAware {
  * @see [DKodein]
  */
 @Suppress("FunctionName", "ClassName")
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DirectDIBase"), level = DeprecationLevel.WARNING)
 interface DKodeinBase : DKodeinAware {
 
     /**
@@ -174,6 +176,7 @@ interface DKodeinBase : DKodeinAware {
  *
  * Note that `DKodein` is engineered to also work with Java code.
  */
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DirectDI"), level = DeprecationLevel.WARNING)
 expect interface DKodein : DKodeinBase
 
 /**

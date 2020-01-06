@@ -11,6 +11,7 @@ import org.kodein.di.bindings.BindingKodein
  * Contains almost nothing because the Kodein object itself contains very few logic.
  * Everything is delegated wither to [container].
  */
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DIImpl"), level = DeprecationLevel.WARNING)
 internal open class KodeinImpl internal constructor(private val _container: KodeinContainerImpl) : Kodein {
 
     @Suppress("unused")
@@ -36,6 +37,7 @@ internal open class KodeinImpl internal constructor(private val _container: Kode
 }
 
 @Suppress("UNCHECKED_CAST")
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("BindingDIImpl"), level = DeprecationLevel.WARNING)
 internal open class BindingKodeinImpl<out C, out A, out T: Any> internal constructor(
         override val dkodein: DKodein,
         private val _key: Kodein.Key<C, A, T>,

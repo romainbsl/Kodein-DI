@@ -133,6 +133,7 @@ class FindDSL : SearchDSL() {
 /**
  * Used to find bindings that match a particular [SearchSpecs].
  */
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DITree.findAllBindings"), level = DeprecationLevel.WARNING)
 fun KodeinTree.findAllBindings(f: FindDSL.() -> Unit): List<Triple<Kodein.Key<*, *, *>, List<KodeinDefinition<*, *, *>>, ContextTranslator<*, *>?>> {
     val dsl = FindDSL()
     dsl.f()

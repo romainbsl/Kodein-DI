@@ -9,6 +9,7 @@ import kotlin.reflect.KProperty
  * 2. When you want retrieval to happen, call [trigger].
  */
 @Suppress("unused")
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DITrigger"), level = DeprecationLevel.WARNING)
 class KodeinTrigger {
 
     /**
@@ -34,6 +35,7 @@ interface LazyDelegate<out V> {
  *
  * In essence, the Kodein object is accessed only upon retrieving.
  */
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DIProperty"), level = DeprecationLevel.WARNING)
 class KodeinProperty<out V>(internal val trigger: KodeinTrigger?, val originalContext: KodeinContext<*>, private val get: (KodeinContext<*>, String) -> V) : LazyDelegate<V> {
 
     override fun provideDelegate(receiver: Any?, prop: KProperty<Any?>): Lazy<V> = lazy {
@@ -44,6 +46,7 @@ class KodeinProperty<out V>(internal val trigger: KodeinTrigger?, val originalCo
 
 }
 
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DIPropertyMap"), level = DeprecationLevel.WARNING)
 class KodeinPropertyMap<in I, out O>(private val base: KodeinProperty<I>, private val map: (I) -> O) : LazyDelegate<O> {
 
     override fun provideDelegate(receiver: Any?, prop: KProperty<Any?>): Lazy<O> = lazy { map(base.provideDelegate(receiver, prop).value) }.also { base.trigger?.properties?.add(it) }

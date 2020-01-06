@@ -29,6 +29,7 @@ private val _needGATWrapper: Boolean by lazy {
  *
  * @property type The type object to wrap.
  */
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DIWrapperType"), level = DeprecationLevel.WARNING)
 class KodeinWrappedType(val type: Type) : Type {
 
     private var _hashCode: Int = 0

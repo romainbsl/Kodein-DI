@@ -7,6 +7,7 @@ import kotlin.reflect.KProperty
  *
  * You can use all lazy methods on this even if [baseKodein] is not set, but you cannot **retrieve** a value while it is not set.
  */
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("LateInitDI"), level = DeprecationLevel.WARNING)
 class LateInitKodein : Kodein {
 
     /**
@@ -20,6 +21,7 @@ class LateInitKodein : Kodein {
 /**
  * Kodein object that defers all method to a kodein object that will be created only upon first retrieval.
  */
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("LazyDI"), level = DeprecationLevel.WARNING)
 class LazyKodein(f: () -> Kodein) : Kodein {
 
     /**

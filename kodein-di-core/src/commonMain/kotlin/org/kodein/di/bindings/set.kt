@@ -18,6 +18,7 @@ abstract class BaseMultiBinding<C, A, T: Any> : KodeinBinding<C, A, Set<T>> {
     override fun factoryName(): String = "bindingSet"
 }
 
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("SetBindingDI"), level = DeprecationLevel.WARNING)
 private class SetBindingKodein<out C>(private val _base: BindingKodein<C>) : BindingKodein<C> by _base {
     override fun overriddenFactory() = throw IllegalStateException("Cannot access overrides in a Set binding")
     override fun overriddenFactoryOrNull() = throw IllegalStateException("Cannot access overrides in a Set binding")

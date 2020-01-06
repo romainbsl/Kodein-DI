@@ -26,6 +26,7 @@ private typealias ArgumentTypeTree = MutableMap<TypeChecker.Down, TagTree>
 
 private typealias TagTree = MutableMap<Any?, Kodein.Key<*, *, *>>
 
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DITreeImpl"), level = DeprecationLevel.WARNING)
 internal class KodeinTreeImpl(
         map: Map<Kodein.Key<*, *, *>, List<KodeinDefining<*, *, *>>>,
         override val externalSources: List<ExternalSource>,

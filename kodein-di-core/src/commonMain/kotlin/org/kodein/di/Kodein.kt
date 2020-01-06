@@ -20,6 +20,7 @@ import org.kodein.di.internal.KodeinImpl
  * }
  * ```
  */
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DI"), level = DeprecationLevel.WARNING)
 interface Kodein : KodeinAware {
 
     /**
@@ -151,6 +152,7 @@ interface Kodein : KodeinAware {
      * Defines a kodein DSL function
      */
     @DslMarker
+    @Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DIDsl"), level = DeprecationLevel.WARNING)
     annotation class KodeinDsl
 
     /**

@@ -3,10 +3,12 @@ package org.kodein.di.internal
 import org.kodein.di.*
 
 @Suppress("UNCHECKED_CAST")
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DIContext"), level = DeprecationLevel.WARNING)
 private inline val KodeinContext<*>.anyType get() = type as TypeToken<in Any?>
 
 
 @Suppress("FunctionName")
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DirectDIBaseImpl"), level = DeprecationLevel.WARNING)
 internal abstract class DKodeinBaseImpl protected constructor(override val container: KodeinContainer, val context: KodeinContext<*>) : DKodein {
 
     override val dkodein: DKodein get() = this
@@ -35,5 +37,5 @@ internal abstract class DKodeinBaseImpl protected constructor(override val conta
 
     override fun <A, T : Any> InstanceOrNull(argType: TypeToken<in A>, type: TypeToken<T>, tag: Any?, arg: A): T? = container.factoryOrNull(Kodein.Key(context.anyType, argType, type, tag), context.value)?.invoke(arg)
 }
-
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("DirectDIImpl"), level = DeprecationLevel.WARNING)
 internal expect class DKodeinImpl(container: KodeinContainer, context: KodeinContext<*>) : DKodein

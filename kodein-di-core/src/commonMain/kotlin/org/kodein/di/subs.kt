@@ -10,6 +10,7 @@ package org.kodein.di
  *   By default, all bindings that do not hold references (e.g. not singleton or multiton) are copied.
  * @param init [Kodein] container configuration block
  */
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("subDI"), level = DeprecationLevel.WARNING)
 inline fun subKodein(parentKodein: Kodein, allowSilentOverride: Boolean = false, copy: Copy = Copy.NonCached, crossinline init: Kodein.MainBuilder.() -> Unit) = Kodein.lazy(allowSilentOverride) {
     extend(parentKodein, copy = copy)
     init()

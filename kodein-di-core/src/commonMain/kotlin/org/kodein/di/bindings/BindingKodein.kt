@@ -33,6 +33,7 @@ interface WithContext<out C> {
  * @param C The type of the context
  */
 @Kodein.KodeinDsl
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("SimpleBindingDI"), level = DeprecationLevel.WARNING)
 interface SimpleBindingKodein<out C> : DKodein, WithContext<C> {
 
     /**
@@ -60,6 +61,7 @@ interface SimpleBindingKodein<out C> : DKodein, WithContext<C> {
  *
  * @param C The type of the context
  */
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("BindingDI"), level = DeprecationLevel.WARNING)
 interface BindingKodein<out C> : SimpleBindingKodein<C>
 
 /**
@@ -70,6 +72,7 @@ interface BindingKodein<out C> : SimpleBindingKodein<C>
  * @param C The type of the context
  */
 @Kodein.KodeinDsl
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("NoArgSimpleBindingDI"), level = DeprecationLevel.WARNING)
 interface NoArgSimpleBindingKodein<out C> : DKodein, WithContext<C> {
 
     /**
@@ -114,8 +117,10 @@ interface NoArgSimpleBindingKodein<out C> : DKodein, WithContext<C> {
  *
  * @param C The type of the context
  */
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("NoArgBindingDI"), level = DeprecationLevel.WARNING)
 interface NoArgBindingKodein<out C> : NoArgSimpleBindingKodein<C>
 
+@Deprecated("Deprecated in favor of a new API", replaceWith = ReplaceWith("NoArgBindingDIWrap"), level = DeprecationLevel.WARNING)
 internal class NoArgBindingKodeinWrap<out C>(private val _kodein: BindingKodein<C>) : NoArgBindingKodein<C>, DKodein by _kodein, WithContext<C> by _kodein {
     override fun overriddenProvider() = _kodein.overriddenFactory().toProvider { Unit }
     override fun overriddenProviderOrNull() = _kodein.overriddenFactoryOrNull()?.toProvider { Unit }
