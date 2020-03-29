@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: build-deploy-linux
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -11,7 +11,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build-deploy-linux:
+  kodein-di:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     container: docker://romainbsl/kmp-native:1.3.71
@@ -31,4 +31,25 @@ jobs:
           BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
           BINTRAY_APIKEY: ${{ secrets.BINTRAY_APIKEY }}
           BINTRAY_USER_ORG: ${{ secrets.BINTRAY_USER_ORG }}
-        run: ./gradlew :kodein-di:bintrayUpload -PsnapshotNumber=$GITHUB_RUN_ID
+        run: ./gradlew :kodein-di:bintrayUpload -PsnapshotNumber=$GITHUB_RUN_IDkodein-di:
+  kodein-di-conf:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    container: docker://romainbsl/kmp-native:1.3.71
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Disable JVM and JS
+        run: echo "excludeTargets = jvm,js" >> gradle.properties
+      # Runs a single command using the runners shell
+      - name: test
+        run: ./gradlew :kodein-di-conf:check
+      - name: compile
+        run: ./gradlew :kodein-di-conf:build
+      - name: deploy
+        env:
+          BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
+          BINTRAY_APIKEY: ${{ secrets.BINTRAY_APIKEY }}
+          BINTRAY_USER_ORG: ${{ secrets.BINTRAY_USER_ORG }}
+        run: ./gradlew :kodein-di-conf:bintrayUpload -PsnapshotNumber=$GITHUB_RUN_ID
