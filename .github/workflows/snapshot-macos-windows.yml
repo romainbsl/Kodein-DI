@@ -24,7 +24,7 @@ jobs:
       - name: Native Only
         run: echo excludeTargets = jvm,js >> gradle.properties
       - name: assemble
-        run: ./gradlew :kodein-di:assemble
+        run: ./gradlew :kodein-di:assemble --stacktrace
       - name: test
         run: ./gradlew :kodein-di:check
       - name: deploy
