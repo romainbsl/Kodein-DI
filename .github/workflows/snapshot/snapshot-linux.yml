@@ -22,10 +22,12 @@ jobs:
       - name: Disable JVM and JS
         run: echo "excludeTargets = jvm,js" >> gradle.properties
       # Runs a single command using the runners shell
+      - name: assemble
+        run: ./gradlew :kodein-di:assemble
       - name: test
         run: ./gradlew :kodein-di:check
-      - name: compile
-        run: ./gradlew :kodein-di:build
+      - name: deploy
+        run: ./gradlew :kodein-di:bintrayUpload
   kodein-di-conf:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -37,10 +39,12 @@ jobs:
       - name: Disable JVM and JS
         run: echo "excludeTargets = jvm,js" >> gradle.properties
       # Runs a single command using the runners shell
+      - name: assemble
+        run: ./gradlew :kodein-di-conf:assemble
       - name: test
         run: ./gradlew :kodein-di-conf:check
-      - name: compile
-        run: ./gradlew :kodein-di-conf:build
+      - name: deploy
+        run: ./gradlew :kodein-di-conf:bintrayUpload
   jvm-only:
     runs-on: ubuntu-latest
     steps:
