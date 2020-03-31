@@ -69,6 +69,6 @@ jobs:
         with:
           java-version: 11
       - name: test
-        run: ./gradlew check
+        run: ./gradlew check --no-daemon -s
       - name: compile
         run: ./gradlew build
